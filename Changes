@@ -1,0 +1,18 @@
+0.04 2013-04-06
+        - Use get_xrd() method from
+	  Mojolicious::Plugin::XRD 0.04.
+	- use filter_rel() method from XML::Loy::XRD 0.15.
+	- Initial release on CPAN.
+
+0.03 2013-04-05
+        - Added async methods.
+	- added async example.
+	- Fixed async-mode.
+	- Added support for configuration files.
+
+0.02 2013-04-01
+        - Added example script.
+
+0.01 2013-03-31
+        - Separation from Sojolicious.
+        - Initial submission to GitHub.
