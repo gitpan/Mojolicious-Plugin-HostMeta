@@ -1,5 +1,5 @@
 ---
-abstract: 'Serve and Retrieve Host-Meta documents'
+abstract: 'Serve and Retrieve Host-Meta Documents'
 author:
   - 'Nils Diewald'
 build_requires:
@@ -27,4 +27,4 @@ requires:
 resources:
   license: http://www.opensource.org/licenses/artistic-license-2.0
   repository: https://github.com/Akron/Mojolicious-Plugin-HostMeta
-version: 0.05
+version: 0.06

@@ -1,5 +1,5 @@
 {
-   "abstract" : "Serve and Retrieve Host-Meta documents",
+   "abstract" : "Serve and Retrieve Host-Meta Documents",
    "author" : [
       "Nils Diewald"
    ],
@@ -50,5 +50,5 @@
          "url" : "https://github.com/Akron/Mojolicious-Plugin-HostMeta"
       }
    },
-   "version" : "0.05"
+   "version" : "0.06"
 }
