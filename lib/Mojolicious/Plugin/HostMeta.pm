@@ -1,13 +1,10 @@
 package Mojolicious::Plugin::HostMeta;
 use Mojo::Base 'Mojolicious::Plugin';
-use Mojo::UserAgent;
 use Mojo::Headers;
-use Mojo::JSON;
 use Mojo::Util qw/quote deprecated/;
-use Mojo::IOLoop;
 
 
-our $VERSION = 0.06;
+our $VERSION = 0.07;
 
 
 my $WK_PATH = '/.well-known/host-meta';
@@ -435,8 +432,8 @@ The callback C<hostmeta_fetch> is deprecated.
 =head2 prepare_hostmeta
 
   $mojo->hook(prepare_hostmeta => sub {
-    my ($c, $hostmeta) = @_;
-    $hostmeta->link(permanent => '/perma.html');
+    my ($c, $xrd) = @_;
+    $xrd->link(permanent => '/perma.html');
   };
 
 This hook is run when the host's own host-meta document is
@@ -448,8 +445,8 @@ This hook is only emitted once for each subscriber.
 =head2 before_serving_hostmeta
 
   $mojo->hook('before_serving_hostmeta' => sub {
-    my ($c, $hostmeta) = @_;
-    $hostmeta->link(lrdd => './well-known/host-meta');
+    my ($c, $xrd) = @_;
+    $xrd->link(lrdd => './well-known/host-meta');
   };
 
 This hook is run before the host's own host-meta document is
