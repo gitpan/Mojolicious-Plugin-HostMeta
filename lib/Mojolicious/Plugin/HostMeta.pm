@@ -4,7 +4,7 @@ use Mojo::Headers;
 use Mojo::Util qw/quote deprecated/;
 
 
-our $VERSION = 0.07;
+our $VERSION = 0.08;
 
 
 my $WK_PATH = '/.well-known/host-meta';
@@ -334,7 +334,7 @@ B<This module is an early release! There may be significant changes in the futur
 
 =head1 METHODS
 
-=head2 C<register>
+=head2 register
 
   # Mojolicious
   $app->plugin(HostMeta => {
@@ -354,7 +354,7 @@ as part of the configuration file with the key C<HostMeta>.
 
 =head1 HELPERS
 
-=head2 C<hostmeta>
+=head2 hostmeta
 
   # In Controller:
   my $xrd = $c->hostmeta;
@@ -425,6 +425,7 @@ helper or on registration.
 This can be used for caching.
 
 The callback C<hostmeta_fetch> is deprecated.
+Callbacks may be changed for non-blocking requests.
 
 
 =head1 HOOKS

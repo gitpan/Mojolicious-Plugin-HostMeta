@@ -21,12 +21,15 @@
 use Mojolicious::Lite;
 use lib '../lib';
 
+use Carp 'verbose';
+
 plugin 'HostMeta';
 
 # Default varianles
 app->defaults(
   title => 'HostMeta Demo'
 );
+
 
 # Prepare a link
 hook prepare_hostmeta => sub {
@@ -45,11 +48,14 @@ hook before_serving_hostmeta => sub {
 # Index page
 get '/' => sub {
   my $c = shift;
-  $c->hostmeta(
-    sub {
+  my $host = $c->param('host');
+
+  $c->render_later;
+  return $c->hostmeta(
+    $host => sub {
       my $xrd = shift;
-      $c->stash(xrd => $xrd->to_pretty_xml) unless $c->param('host');
-      $c->render(template => 'index');
+      $c->stash(xrd => $xrd->to_pretty_xml) if $xrd;
+      return $c->render(template => 'index');
     }
   );
 } => 'index';
@@ -60,6 +66,8 @@ post '/' => sub {
   my $c = shift;
   my $host = $c->param('host');
 
+  $c->render_later;
+
   # Discovery
   $c->hostmeta(
     $host => sub {
@@ -67,7 +75,9 @@ post '/' => sub {
 
       if ($hm) {
 	# Check formatting
-	my $rv = $c->param('submit') && $c->param('submit') eq 'json' ? $hm->to_json : $hm->to_pretty_xml;
+	my $rv =
+	  ($c->param('submit') && $c->param('submit') eq 'json') ?
+	    $hm->to_json : $hm->to_pretty_xml;
 	$c->flash(xrd => $rv ) if $hm;
       }
 
@@ -84,8 +94,10 @@ post '/' => sub {
     });
 };
 
+
 # Start application
 app->start;
+
 
 __DATA__
 
