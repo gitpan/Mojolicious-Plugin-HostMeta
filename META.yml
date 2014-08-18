@@ -18,7 +18,7 @@ no_index:
     - t
     - inc
 requires:
-  Mojolicious: '4.77'
+  Mojolicious: '5.29'
   Mojolicious::Plugin::Util::Callback: '0.02'
   Mojolicious::Plugin::Util::Endpoint: '0.13'
   Mojolicious::Plugin::XRD: '0.04'
@@ -27,4 +27,4 @@ requires:
 resources:
   license: http://www.opensource.org/licenses/artistic-license-2.0
   repository: https://github.com/Akron/Mojolicious-Plugin-HostMeta
-version: '0.12'
+version: '0.13'
