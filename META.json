@@ -32,10 +32,10 @@
       },
       "runtime" : {
          "requires" : {
-            "Mojolicious" : "5.29",
+            "Mojolicious" : "5.48",
             "Mojolicious::Plugin::Util::Callback" : "0.02",
             "Mojolicious::Plugin::Util::Endpoint" : "0.13",
-            "Mojolicious::Plugin::XRD" : "0.04",
+            "Mojolicious::Plugin::XRD" : "0.11",
             "XML::Loy" : "0.19",
             "perl" : "5.010001"
          }
@@ -50,5 +50,5 @@
          "url" : "https://github.com/Akron/Mojolicious-Plugin-HostMeta"
       }
    },
-   "version" : "0.14"
+   "version" : "0.15"
 }
