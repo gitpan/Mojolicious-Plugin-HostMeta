@@ -22,9 +22,9 @@ requires:
   Mojolicious::Plugin::Util::Callback: '0.02'
   Mojolicious::Plugin::Util::Endpoint: '0.13'
   Mojolicious::Plugin::XRD: '0.11'
-  XML::Loy: '0.19'
+  XML::Loy: '0.26'
   perl: '5.010001'
 resources:
   license: http://www.opensource.org/licenses/artistic-license-2.0
   repository: https://github.com/Akron/Mojolicious-Plugin-HostMeta
-version: '0.15'
+version: 0.16_1

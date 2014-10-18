@@ -10,6 +10,18 @@ use Mojolicious::Lite;
 
 my $hm_host = 'hostme.ta';
 
+get '/get-hostmeta' => sub {
+  my $c = shift;
+  my $uri = $c->param('uri');
+  $c->render_later;
+  $c->hostmeta(
+    $uri => sub {
+      my $xrd = shift;
+      $c->render_xrd($xrd);
+    }
+  );
+};
+
 my $t = Test::Mojo->new;
 my $app = $t->app;
 $app->plugin('HostMeta');
@@ -27,19 +39,6 @@ $app->hook(
     $base->parse('http://' . $hm_host . '/');
     $base->port('');
   });
-
-get '/get-hostmeta' => sub {
-  my $c = shift;
-  my $uri = $c->param('uri');
-  $c->render_later;
-  $c->hostmeta(
-    $uri => sub {
-      my $xrd = shift;
-      $c->render_xrd($xrd);
-    }
-  );
-};
-
 
 $t->get_ok('/get-hostmeta?uri=gmail.com')
   ->status_is(200)
