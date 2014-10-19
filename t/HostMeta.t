@@ -26,6 +26,25 @@ my $t = Test::Mojo->new;
 my $app = $t->app;
 $app->plugin('HostMeta');
 
+$app->callback(
+  fetch_hostmeta => sub {
+    my ($c, $host) = @_;
+
+    my $xrd = $c->new_xrd;
+    if ($host eq 'example.org') {
+      $xrd->link(bar => 'foo');
+      return $xrd;
+    }
+    elsif ($host eq 'check.com') {
+      $xrd->link(lrdd => {
+	template => 'https://profiles.google.com/_/webfinger/?q={uri}'
+      })->add(Title => 'Resource Descriptor');
+
+      return $xrd;
+    };
+    return;
+  });
+
 my $c = Mojolicious::Controller->new;
 
 # Set request information globally
@@ -40,10 +59,9 @@ $app->hook(
     $base->port('');
   });
 
-$t->get_ok('/get-hostmeta?uri=gmail.com')
+$t->get_ok('/get-hostmeta?uri=check.com')
   ->status_is(200)
   ->text_is('Link[rel=lrdd] Title', 'Resource Descriptor');
-
 
 my $h = $app->renderer->helpers;
 
@@ -96,18 +114,6 @@ $t->get_ok('/.well-known/host-meta')
     ->text_is('Property[type="foo"]' => 'bar')
     ->element_exists('Host')
     ->text_is(Host => $hm_host);
-
-$app->callback(
-  fetch_hostmeta => sub {
-    my ($c, $host) = @_;
-
-    if ($host eq 'example.org') {
-      my $xrd = $c->new_xrd;
-      $xrd->link(bar => 'foo');
-      return $xrd;
-    }
-    return;
-  });
 
 my $xrd = $t->app->hostmeta('example.org');
 ok(!$xrd->property, 'Property not found.');

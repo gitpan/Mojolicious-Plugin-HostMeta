@@ -1,3 +1,6 @@
+0.16 2014-10-19
+        - Made test suite not rely on live systems.
+
 0.16_1 2014-10-18
         - Probably fix a testing issue.
 

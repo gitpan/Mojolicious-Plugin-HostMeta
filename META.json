@@ -41,7 +41,7 @@
          }
       }
    },
-   "release_status" : "testing",
+   "release_status" : "stable",
    "resources" : {
       "license" : [
          "http://www.opensource.org/licenses/artistic-license-2.0"
@@ -50,5 +50,5 @@
          "url" : "https://github.com/Akron/Mojolicious-Plugin-HostMeta"
       }
    },
-   "version" : "0.16_1"
+   "version" : "0.16"
 }
