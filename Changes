@@ -1,3 +1,7 @@
+0.17 2014-10-20
+        - Add M::P::XML::Loy dependency.
+	  (Just for CPANTesters).
+
 0.16 2014-10-19
         - Made test suite not rely on live systems.
 

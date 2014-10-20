@@ -3,7 +3,7 @@ use Mojo::Base 'Mojolicious::Plugin';
 use Mojo::Headers;
 use Mojo::Util qw/quote/;
 
-our $VERSION = '0.16';
+our $VERSION = '0.17';
 
 our $WK_PATH = '/.well-known/host-meta';
 
